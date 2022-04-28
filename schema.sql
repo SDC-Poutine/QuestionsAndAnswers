@@ -68,3 +68,6 @@ SELECT setval('questions_id_seq', (SELECT max(id) FROM questions));
 create index product_id_index on questions(product_id);
 create index answer_id_index on photos(answer_id);
 create index question_id_index on answers(question_id);
+create index q_id_index on questions(id);
+create index a_id_index on answers(id);
+create index p_id_index on photos(id);
