@@ -1,11 +1,12 @@
 const { Pool, Client } = require('pg').native;
 require('dotenv').config();
+const PASSWORD = require('../config');
 
 const config = {
   user: 'postgres',
   host: 'localhost',
   database: 'qna',
-  password: process.env.PASSWORD,
+  password: PASSWORD || process.env.PASSWORD,
   port: 5432,
   max: 20
 };
