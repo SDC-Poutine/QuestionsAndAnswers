@@ -1,0 +1,13 @@
+node_modules
+
+.env
+
+questions.csv
+
+answers.csv
+
+answers_photos.csv
+
+questions.sql
+
+answers.sql
