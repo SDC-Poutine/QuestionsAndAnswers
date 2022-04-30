@@ -13,3 +13,5 @@ questions.sql
 answers.sql
 
 config.js
+
+qnaDb.dump

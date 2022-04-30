@@ -41,9 +41,9 @@ FROM '/Users/cloverhong/Documents/hackreactor/QuestionsAndAnswers/questions.csv'
 DELIMITER ','
 CSV HEADER;
 
-ALTER TABLE questions ADD COLUMN temp_date TIMESTAMP WITH TIME ZONE NULL;
-UPDATE TABLE questions SET temp_date = to_timestamp(date/1000)::TIMESTAMP;
-ALTER TABLE questions date_written TYPE TIMESTAMP WITHOUT TIME ZONE USING temp_date;
+ALTER TABLE questions ADD COLUMN temp_date TIMESTAMP WITHOUT TIME ZONE NULL;
+UPDATE questions SET temp_date = to_timestamp(date_written/1000)::TIMESTAMP;
+ALTER TABLE questions ALTER COLUMN date_written TYPE TIMESTAMP WITHOUT TIME ZONE USING temp_date;
 ALTER TABLE questions DROP COLUMN temp_date;
 
 COPY answers(id, question_id, body, date_written, answerer_name, answerer_email, reported, helpful)
@@ -51,9 +51,9 @@ FROM '/Users/cloverhong/Documents/hackreactor/QuestionsAndAnswers/answers.csv'
 DELIMITER ','
 CSV HEADER;
 
-ALTER TABLE answers ADD COLUMN temp_date TIMESTAMP WITH TIME ZONE NULL;
-UPDATE TABLE answers SET temp_date = to_timestamp(date/1000)::TIMESTAMP;
-ALTER TABLE answers date_written TYPE TIMESTAMP WITHOUT TIME ZONE USING temp_date;
+ALTER TABLE answers ADD COLUMN temp_date TIMESTAMP WITHOUT TIME ZONE NULL;
+UPDATE answers SET temp_date = to_timestamp(date_written/1000)::TIMESTAMP;
+ALTER TABLE answers ALTER COLUMN date_written TYPE TIMESTAMP WITHOUT TIME ZONE USING temp_date;
 ALTER TABLE answers DROP COLUMN temp_date;
 
 COPY photos(id, answer_id, url)
