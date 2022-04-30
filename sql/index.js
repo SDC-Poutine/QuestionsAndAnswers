@@ -1,12 +1,12 @@
 const { Pool, Client } = require('pg').native;
-require('dotenv').config();
-const PASSWORD = require('../config');
+//require('dotenv').config();
+const configJS = require('../config');
 
 const config = {
-  user: 'postgres',
-  host: 'localhost',
+  user: configJS.USER,
+  host: configJS.HOST,
   database: 'qna',
-  password: PASSWORD || process.env.PASSWORD,
+  password: configJS.PASSWORD,
   port: 5432,
   max: 20
 };
@@ -28,4 +28,5 @@ pool.connect((err, client, release) => {
 //client.connect();
 module.exports = pool;
 //module.exports.client = new Client(config);
+
 
