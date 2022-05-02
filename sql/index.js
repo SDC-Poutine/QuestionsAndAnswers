@@ -1,4 +1,4 @@
-const { Pool, Client } = require('pg').native;
+const { Pool, Client } = require('pg');
 //require('dotenv').config();
 const configJS = require('../config');
 
